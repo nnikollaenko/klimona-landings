@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Thank you — Klimona</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .thanks { min-height: 100svh; background: var(--ink); color: var(--white); display: flex; flex-direction: column; }
+  .thanks__body { margin: auto 0; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; padding-top: 64px; padding-bottom: 64px; }
+  .thanks h1 { font-size: clamp(30px, 4.5vw, 64px); max-width: 900px; }
+  .thanks p { font-size: 18px; color: rgba(255, 255, 255, .7); max-width: 560px; }
+</style>
+</head>
+<body>
+<div class="thanks">
+  <div class="wrap" style="padding-top:32px"><img src="assets/logo-white.png" alt="Klimona Development" style="height:40px;width:auto"></div>
+  <div class="thanks__body wrap">
+    <span class="success__icon" style="background:#fff;color:#12131b">✓</span>
+    <h1 id="t">Thank you, your request has been sent</h1>
+    <p id="s">A Klimona manager will contact you within 15 minutes during working hours.</p>
+    
+  </div>
+</div>
+<script>
+  // Same Pixel ID as CONFIG.pixelId in app.js
+  var PIXEL_ID = "";
+  var q = new URLSearchParams(location.search);
+  if (q.get("lang") === "ru") {
+    document.documentElement.lang = "ru";
+    document.getElementById("t").textContent = "Спасибо, заявка отправлена";
+    document.getElementById("s").textContent = "Менеджер Klimona свяжется с вами в течение 15 минут в рабочее время.";
+    document.getElementById("b").textContent = "Вернуться к резиденциям";
+  }
+  if (PIXEL_ID) {
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", PIXEL_ID);
+    fbq("track", "PageView");
+    fbq("track", "Lead", { content_name: q.get("product") || "unknown" });
+  }
+</script>
+</body>
+</html>
