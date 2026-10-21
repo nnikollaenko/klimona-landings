@@ -196,7 +196,34 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 .progress p { font-size: 16px; color: rgba(255, 255, 255, .7); }
 .photos { margin-top: 64px; }
 .photos h3 { font-size: 14px; font-family: var(--sans); font-weight: 700; color: rgba(255, 255, 255, .6); margin-bottom: 20px; }
-.ph-slot { aspect-ratio: 416 / 300; border: 1px dashed rgba(255, 255, 255, .3); display: flex; align-items: flex-end; padding: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
+
+/* construction status panel */
+.status__panel { display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.status__big { display: flex; align-items: baseline; gap: 16px; }
+.status__big b { font-family: var(--display); font-weight: 500; font-size: 120px; line-height: .85; }
+.status__big span { font-size: 18px; color: rgba(255, 255, 255, .7); }
+.photos figcaption { margin-top: 12px; font-size: 14px; font-weight: 700; text-transform: uppercase; color: rgba(255, 255, 255, .6); }
+.ph-slot { aspect-ratio: 416 / 300; border: 1px dashed rgba(255, 255, 255, .3); }
+
+/* slider with arrows (no swipe-scrolling); on desktop the photo slider turns into a 3-column grid */
+.slider__viewport { overflow: hidden; }
+.slider__track { display: flex; transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
+.slider__slide { flex: 0 0 100%; margin: 0; }
+.slider__nav { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+.slider__btn { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: none; border: 1px solid rgba(255, 255, 255, .4); color: inherit; cursor: pointer; transition: background-color .2s, color .2s, opacity .2s; }
+.slider__btn svg { width: 18px; height: 18px; }
+.slider__btn:hover { background: var(--white); color: var(--ink); }
+.slider__btn[disabled] { opacity: .3; pointer-events: none; }
+.slider__count { font-size: 15px; font-weight: 700; }
+@media (min-width: 861px) {
+  .slider--grid-desktop .slider__track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); transform: none !important; }
+  .slider--grid-desktop .slider__nav { display: none; }
+}
+.plan__slider { display: none; }
+.plan__slider .slider__slide img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: #efefef; }
+.plan__slider figcaption { margin-top: 12px; font-size: 15px; font-weight: 700; }
+.plan__slider .slider__btn { border-color: rgba(18, 19, 27, .3); }
+.plan__slider .slider__btn:hover { background: var(--ink); color: var(--white); }
 
 /* ---------- villa plan ---------- */
 .plan__img { width: 100%; aspect-ratio: 1296 / 452; object-fit: contain; background: #efefef; }
@@ -395,15 +422,20 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 
   .kfig { grid-template-columns: 1fr 1fr; row-gap: 28px; }
   .kfig b { font-size: 48px; }
-  .gal { display: flex; gap: 10px; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .gal::-webkit-scrollbar { display: none; }
-  .gal img, .gal--2 img, .gal figure, .gal .ph-slot { flex: 0 0 78%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+  .gal { gap: 10px; }
   .gal + .gal { margin-top: 10px; }
-  .progress__row span { font-size: 17px; }
+  .gal--2 { grid-template-columns: 1fr; }
+  .gal--3 { grid-template-columns: 1fr 1fr; }
+  .gal--3 > :first-child { grid-column: 1 / -1; }
+  .gal img, .gal--2 img { aspect-ratio: 4 / 3; }
+  .gal--3 > img:not(:first-child) { aspect-ratio: 1 / 1; }
+  .plan__wrap { display: none; }
+  .plan__slider { display: block; }
+  .status__panel { gap: 20px; order: 0 !important; }
+  .status__big b { font-size: 88px; }
+  .status__big span { font-size: 17px; }
   .progress__row b { font-size: 64px; }
   .photos { margin-top: 40px; }
-  .plan__wrap { overflow-x: auto; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); }
-  .plan__img { width: 860px; max-width: none; }
   .plan__specs { grid-template-columns: 1fr 1fr; margin-top: 28px; }
   .plan__specs dd { font-size: 17px; }
   .big-num { font-size: 140px; }

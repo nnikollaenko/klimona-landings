@@ -345,4 +345,25 @@
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  // ---------------------------------------------------------------------------
+  // Sliders: one slide at a time, arrows + counter (no swipe-scrolling)
+  // ---------------------------------------------------------------------------
+  document.querySelectorAll("[data-slider]").forEach(function (sl) {
+    var track = sl.querySelector(".slider__track");
+    var slides = track.children.length;
+    var prev = sl.querySelector("[data-prev]"), next = sl.querySelector("[data-next]");
+    var count = sl.querySelector(".slider__count");
+    var i = 0;
+    function go(n) {
+      i = Math.max(0, Math.min(slides - 1, n));
+      track.style.transform = "translateX(" + (-100 * i) + "%)";
+      count.textContent = (i + 1) + " / " + slides;
+      prev.disabled = i === 0;
+      next.disabled = i === slides - 1;
+    }
+    prev.addEventListener("click", function () { go(i - 1); });
+    next.addEventListener("click", function () { go(i + 1); });
+    go(0);
+  });
 })();
