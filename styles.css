@@ -139,15 +139,13 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 .tiles b { font-family: var(--display); font-weight: 500; text-transform: uppercase; font-size: 28px; line-height: 1; }
 .tiles span { font-size: 16px; color: rgba(255, 255, 255, .7); }
 
-/* ---------- timeline ---------- */
-.timeline { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); padding-top: 40px; }
-.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: var(--line); }
-.timeline::after { content: ""; position: absolute; left: 0; top: 7px; height: 2px; width: 16.6%; background: var(--red); }
-.timeline li { position: relative; display: flex; flex-direction: column; gap: 8px; }
-.timeline li::before { content: ""; position: absolute; top: -40px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--white); border: 2px solid var(--ink); }
-.timeline li:first-child::before { background: var(--red); border-color: var(--red); }
-.timeline b { font-family: var(--display); font-weight: 500; text-transform: uppercase; font-size: 40px; line-height: 1; }
-.timeline span { font-size: 16px; color: var(--grey); }
+/* ---------- handover cards ---------- */
+.handover { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.handover li { border: 1px solid var(--line); padding: 40px; display: flex; flex-direction: column; gap: 8px; min-height: 280px; }
+.handover small { font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--ink); }
+.handover__status { font-size: 15px; color: var(--grey); }
+.handover b { font-family: var(--display); font-weight: 500; text-transform: uppercase; font-size: 64px; line-height: 1; margin-top: auto; padding-top: 32px; }
+.handover span:last-child { font-size: 16px; color: var(--grey); }
 
 /* ---------- payment (2 × 6 columns) ---------- */
 .pay { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
@@ -409,12 +407,9 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
   .tiles li { padding-top: 16px; }
   .tiles b { font-size: 26px; }
   .tiles span { font-size: 15px; }
-  .timeline { grid-template-columns: 1fr; gap: 28px; padding: 0 0 0 36px; }
-  .timeline::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
-  .timeline::after { left: 7px; top: 0; width: 2px; height: 22%; }
-  .timeline li::before { top: 4px; left: -36px; }
-  .timeline b { font-size: 34px; }
-  .timeline span { font-size: 15px; }
+  .handover { grid-template-columns: 1fr; gap: 16px; }
+  .handover li { padding: 28px 24px; min-height: 0; }
+  .handover b { font-size: 44px; padding-top: 24px; }
   .pay li { padding: 28px 24px; min-height: 0; }
   .pay b { font-size: 30px; margin-top: 8px; }
 
