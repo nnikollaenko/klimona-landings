@@ -48,12 +48,13 @@
   // ---------------------------------------------------------------------------
   // Glue short Russian words and numbers to the next word so they never hang at line end
   function nbsp(s) {
-    for (var i = 0; i < 2; i++) s = s.replace(/(^|[\s(«—])([А-Яа-яЁё]{1,3}) /g, "$1$2 ");
+    for (var i = 0; i < 2; i++) s = s.replace(/(^|[\s(«—-])([А-Яа-яЁё]{1,3}) /g, "$1$2 ");
     return s
       .replace(/(\d) (?=\d{3})/g, "$1 ")
-      .replace(/(\d) (м²|мин|млн|кв\.|спал)/g, "$1 $2")
+      .replace(/(\d) (м²|км|мин|млн|кв\.|спал|km|min|m²)/g, "$1 $2")
       .replace(/ \+ /g, " + ")
-      .replace(/ —/g, " —");
+      .replace(/ —/g, " —")
+      .replace(/ - /g, " - ");
   }
 
   function detectLang() {

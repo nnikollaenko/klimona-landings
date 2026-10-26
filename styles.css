@@ -5,6 +5,8 @@
  * Colours: white, ink #12131B, navy #010318, red #E50101, grey #737373, plate = ink 5%.
  */
 @font-face { font-family: "Satoshi"; src: url("fonts/satoshi-variable.ttf") format("truetype"); font-weight: 300 900; font-display: swap; }
+/* Satoshi has no Cyrillic: Russian letters come from Onest, the closest geometric grotesk */
+@font-face { font-family: "Onest Cyrillic"; src: url("fonts/onest-cyrillic.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @font-face { font-family: "TT Bluescreens"; src: url("fonts/tt-bluescreens-variable.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
 
 :root {
@@ -22,8 +24,8 @@
   --max: 1440px;
   --sec: 160px;
   --head-h: 88px;
-  --sans: "Satoshi", system-ui, -apple-system, sans-serif;
-  --display: "TT Bluescreens", "Satoshi", sans-serif;
+  --sans: "Satoshi", "Onest Cyrillic", system-ui, -apple-system, sans-serif;
+  --display: "TT Bluescreens", "Satoshi", "Onest Cyrillic", sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; letter-spacing: 0; }
@@ -244,7 +246,9 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 .loc__dist div { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line-light); }
 .loc__dist b { font-family: var(--display); font-weight: 500; text-transform: uppercase; font-size: 34px; line-height: 1; }
 .loc__time { display: flex; align-items: center; gap: 10px; }
-.loc__nums { display: flex; gap: 4px; min-width: 48px; }
+.loc__nums { display: flex; gap: 4px; min-width: 74px; }
+.loc__proj { font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--white); padding: 32px 0 12px; }
+.loc__proj:first-child { padding-top: 0; }
 .loc__nums i, .map__num { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--white); color: var(--ink); font-size: 12px; font-weight: 700; font-style: normal; border-radius: 50%; }
 .loc__dist div > span:last-child { font-size: 15px; color: rgba(255, 255, 255, .7); text-align: right; }
 .map { position: relative; }
@@ -252,6 +256,7 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 .map__pin, .map__num { position: absolute; }
 .map__num { margin: -32px 0 0 -11px; }
 .map__pin { display: flex; align-items: flex-start; gap: 10px; }
+.map__pin--left { flex-direction: row-reverse; }
 .map__pin svg { width: 22px; height: 30px; flex: 0 0 auto; }
 .map__pin b { font-size: 17px; font-weight: 700; line-height: 1.2; color: var(--white); white-space: nowrap; }
 
@@ -444,7 +449,7 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 
   .loc__map { order: 0 !important; }
   .loc__dist b { font-size: 30px; }
-  .loc__nums { min-width: 48px; }
+  .loc__nums { min-width: 74px; }
   .loc__nums i, .map__num { width: 22px; height: 22px; font-size: 12px; }
   .map__num { margin: -28px 0 0 -11px; }
   .loc__dist div { padding: 12px 0; }
