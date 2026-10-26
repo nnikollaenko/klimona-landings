@@ -125,6 +125,16 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
 .card__status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--grey); }
 .card__status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
 .card .btn { margin-top: auto; }
+/* status + handover tags on the card photo: white = status, dark = handover date */
+.card__media { position: relative; }
+.card__tags { position: absolute; top: 20px; left: 20px; right: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-size: 13px; font-weight: 700; text-transform: uppercase; line-height: 1; }
+.tag--status { background: var(--white); color: var(--ink); }
+.tag--status i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(229, 1, 1, .18); }
+.tag--soon i { background: transparent; border: 2px solid var(--ink); box-shadow: none; }
+.tag--date { background: rgba(18, 19, 27, .82); color: var(--white); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.tag--date span { color: rgba(255, 255, 255, .65); }
+.tag--date svg { width: 14px; height: 14px; flex: 0 0 auto; }
 .specs { width: 100%; }
 .specs > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
 .specs dt { font-size: 15px; color: var(--grey); }
@@ -401,6 +411,8 @@ h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; l
   .card__img { aspect-ratio: 350 / 250; }
   .card__body { padding-top: 20px; gap: 16px; }
   .card .btn { width: 100%; }
+  .card__tags { top: 12px; left: 12px; right: 12px; gap: 6px; }
+  .tag { height: 32px; padding: 0 10px; }
   .specs dt { font-size: 15px; }
   .specs dd { font-size: 17px; }
   .tiles { grid-template-columns: 1fr 1fr; row-gap: 28px; }
